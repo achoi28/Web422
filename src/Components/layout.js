@@ -1,33 +1,4 @@
-// // components/Layout.js
-
-// import React from 'react';
-// import Link from 'next/link';
-
-// const Layout = ({ children }) => {
-//   return (
-//     <div className="layout">
-//       <header className="header">
-//         <h1>Exchange Rates App</h1>
-//         <nav className="nav">
-//         <button><Link href="/">Home</Link></button>
-//         <button></button>
-          
-//           <Link href="/about">About</Link>
-//           <Link href="/favourites">Favorites</Link>
-//           <Link href="/login">Login</Link>
-//         </nav>
-//       </header>
-//       <main className="main-content">
-//         {children}
-//       </main>
-//     </div>
-//   );
-// };
-
-// export default Layout;
-
 // components/Layout.js
-
 import React from 'react';
 import Link from 'next/link';
 import { Container, Nav, Navbar, Button } from 'react-bootstrap';
