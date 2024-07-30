@@ -15,6 +15,7 @@ const Layout = ({ children }) => {
     const handleStorageChange = () => {
       setAuthStatus(isAuthenticated());
     };
+    
 
     window.addEventListener('storage', handleStorageChange);
 
@@ -34,7 +35,7 @@ const Layout = ({ children }) => {
             {authStatus ? (
               <>
                 <Nav.Link as={Link} href="/favourites">Favorites</Nav.Link>
-                <Nav.Link href="#" onClick={(e) => { e.preventDefault(); logout(); }}>Sign out</Nav.Link>
+                <Nav.Link href="#" onClick={(e) => { e.preventDefault(); logout(); alert('you are signed out') }}>Sign out</Nav.Link>
               </>
             ) : (
               <>

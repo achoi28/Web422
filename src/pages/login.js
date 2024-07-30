@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../useAuth';
 import { useRouter } from 'next/router';
+import "@/styles/login.module.css"
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -25,23 +26,32 @@ const LoginPage = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="login-container">
+      <div className='login-box'>
+    <form className='login-form' onSubmit={handleSubmit}>
+      <h1>login information</h1>
       <input
         type="email"
+        className='input-field'
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email"
       />
       <input
         type="password"
+        className='input-field'
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
       />
-      <button type="submit">Login</button>
+      <button className='button' type="submit">Login</button>
       {error && <p>{error}</p>}
+      <br/>
+      <br/>
     </form>
+    </div>
+    </div>
   );
 };
-
 export default LoginPage;
+
