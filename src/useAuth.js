@@ -1,83 +1,67 @@
-import { useAtom } from 'jotai';
-import { userAtom } from './useAtom';
-import jwtDecode from 'jwt-decode';
+// useAuth.js
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-
-const isBrowser = typeof window !== 'undefined';
-
-const setToken = (token) => {
-  if (isBrowser) {
-    localStorage.setItem('access_token', token);
-  }
-};
-
-const getToken = () => {
-  if (isBrowser) {
-    return localStorage.getItem('access_token');
-  }
-  return null;
-};
-
-const readToken = () => {
-  try {
-    const token = getToken();
-    return token ? jwtDecode(token) : null;
-  } catch (err) {
-    console.error('Error decoding token:', err);
-    return null;
-  }
-};
-
-const removeToken = () => {
-  if (isBrowser) {
-    localStorage.removeItem('access_token');
-  }
-};
-
-export const isAuthenticated = () => {
-  const token = getToken();
-  return token ? true : false;
-};
+import { auth } from './firebase';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 
 export const useAuth = () => {
-  const [user, setUser] = useAtom(userAtom);
-  const [authStatus, setAuthStatus] = useState(isAuthenticated());
+  const [user, setUser] = useState(null);
+  const [authStatus, setAuthStatus] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    setAuthStatus(isAuthenticated());
-  }, [user]);
-
-  const login = async ({ email, password }) => {
-    const response = await fetch('/api/auth', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }), // Correct payload structure
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+        setAuthStatus(true);
+      } else {
+        setUser(null);
+        setAuthStatus(false);
+      }
     });
 
-    if (response.ok) {
-      const result = await response.json();
-      setToken(result.token);
-      setUser(result.user); // Assuming the response contains user data
+    return () => unsubscribe();
+  }, []);
+
+  const register = async ({ email, password }) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      setUser(userCredential.user);
       setAuthStatus(true);
-      router.push('/'); // Redirect to home page
-    } else {
-      throw new Error('Invalid credentials');
+      router.push('/');
+    } catch (error) {
+      console.error('Error during registration:', error);
+      throw error;
     }
   };
 
-  const logout = () => {
-    setUser(null);
-    removeToken();
-    setAuthStatus(false);
-    router.push('/login'); // Redirect to login page after logout
+  const login = async ({ email, password }) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      setUser(userCredential.user);
+      setAuthStatus(true);
+      router.push('/');
+    } catch (error) {
+      console.error('Error during login:', error);
+      throw error;
+    }
+  };
+
+  const logout = async () => {
+    try {
+      await signOut(auth);
+      setUser(null);
+      setAuthStatus(false);
+      router.push('/login');
+    } catch (error) {
+      console.error('Error during logout:', error);
+      throw error;
+    }
   };
 
   return {
     user,
+    register,
     login,
     logout,
     isAuthenticated: authStatus,

@@ -1,9 +1,9 @@
 {
-  "/_error": "pages/_error.js",
   "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
+  "/api/crypto": "pages/api/crypto.js",
   "/login": "pages/login.js",
-  "/api/auth": "pages/api/auth.js",
-  "/register": "pages/register.js"
+  "/favourites": "pages/favourites.js"
 }
