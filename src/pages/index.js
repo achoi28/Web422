@@ -1,11 +1,10 @@
-import ExchangeRates from "@/components/rates"
-import CurrencyTable from "@/components/allrates"
+
+import Crypto from "@/components/Btc"
 export default function Home() {
 
   return (
     <>
-    <ExchangeRates/>
-    <CurrencyTable/>
+    <Crypto/>
     </>
   )
 }
