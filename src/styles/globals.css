@@ -1,5 +1,5 @@
 /* styles/globals.css */
-* {
+ * {
   font-family: "Poppins";
 }
 
@@ -127,8 +127,6 @@
 
 
 
-
-
 /* login page */
  
 
@@ -192,3 +190,70 @@
 .footer a:hover {
   text-decoration: underline;
 } 
+
+
+/* main table  */
+.crypto-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+.crypto-table th,
+.crypto-table td {
+  border: 1px solid #dddddd;
+  padding: 12px;
+}
+
+.crypto-table th {
+  background: #5c5555;
+}
+
+.crypto-logo {
+  width: 24px;
+  height: 24px;
+}
+
+.positive-change {
+  color: green;
+}
+
+.negative-change {
+  color: red;
+}
+
+.details-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.page-link {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px;
+  cursor: pointer;
+  border-radius: 5px;
+}
