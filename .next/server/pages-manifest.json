@@ -3,7 +3,7 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/api/crypto": "pages/api/crypto.js",
   "/login": "pages/login.js",
-  "/favourites": "pages/favourites.js"
+  "/api/crypto": "pages/api/crypto.js",
+  "/register": "pages/register.js"
 }

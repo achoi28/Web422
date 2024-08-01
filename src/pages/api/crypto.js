@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const COINMARKETCAP_LISTINGS_URL = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest';
 const COINMARKETCAP_INFO_URL = 'https://pro-api.coinmarketcap.com/v2/cryptocurrency/info';
-const API_KEY = '8a85a154-c0f1-42b7-92ac-fd89a957011f';
+const API_KEY = process.env.NEXT_PUBLIC_CRYPTO_KEY;
 
 export default async function handler(req, res) {
   try {
