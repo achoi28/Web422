@@ -1,4 +1,3 @@
-// components/Layout.js
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Container, Nav, Navbar } from 'react-bootstrap';
@@ -6,16 +5,16 @@ import { useAuth } from '../useAuth';
 import Search from './search';
 
 const Layout = ({ children }) => {
-  const { logout, user } = useAuth();
-  const [authStatus, setAuthStatus] = useState(false);
+  const { logout, user, isAuthenticated } = useAuth();
+  const [authStatus, setAuthStatus] = useState(isAuthenticated);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setAuthStatus(isAuthenticated());
+      setAuthStatus(isAuthenticated);
     }
 
     const handleStorageChange = () => {
-      setAuthStatus(isAuthenticated());
+      setAuthStatus(isAuthenticated);
     };
 
     window.addEventListener('storage', handleStorageChange);
@@ -23,7 +22,7 @@ const Layout = ({ children }) => {
     return () => {
       window.removeEventListener('storage', handleStorageChange);
     };
-  }, [user]);
+  }, [isAuthenticated]);
 
   return (
     <>
