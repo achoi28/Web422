@@ -1,5 +1,5 @@
 
-import Crypto from "@/components/Btc"
+import Crypto from "@/components/cryptoList"
 export default function Home() {
 
   return (
