@@ -10,12 +10,6 @@ const Search = () => {
   const [error, setError] = useState(null);
   const router = useRouter();
 
-  const [expanded, setExpanded] = useState(false);
-
-  const expand = () => {
-    setExpanded(!expanded);
-  };
-
 
 
 
@@ -44,17 +38,23 @@ const Search = () => {
 
   return (
     <div>
-      <form onSubmit={handleSearch}>
+      <form className='search-container' onSubmit={handleSearch}>
         <input
           type="text"
+          name='search'
+          className='search-input'
           placeholder="Search for a cryptocurrency"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button type="submit">Search</button>
+        <button className='search-btn' type="submit">
+          <i className='fas fa-search'></i>
+        </button>
+        
       </form>
       {error && <p>{error}</p>}
-    </div>
+      </div>
+
   );
 };
 

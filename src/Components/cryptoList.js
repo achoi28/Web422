@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
+import loading from "./loading";
 
 const Crypto = () => {
   const [cryptos, setCryptos] = useState([]);
@@ -27,7 +28,7 @@ const Crypto = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    <loading />;
   }
 
   if (error) {
@@ -93,6 +94,7 @@ const Crypto = () => {
           </button>
         ))}
       </div>
+      <loading />
     </div>
   );
 };

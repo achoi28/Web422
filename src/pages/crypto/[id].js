@@ -102,8 +102,6 @@ const CryptoDetail = () => {
          </table>
 
     </div>
-
-    
   );
 };
 
