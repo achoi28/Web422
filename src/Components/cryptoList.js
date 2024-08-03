@@ -48,7 +48,7 @@ const Crypto = () => {
   }
 
   return (
-    <div>
+    <div className='crypto-list-page'>
       <h1>Cryptocurrency Listings</h1>
       <table className="crypto-table">
         <thead>

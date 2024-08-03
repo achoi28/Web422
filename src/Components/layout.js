@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useAuth } from '../useAuth';
 import Search from './search';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Layout = ({ children }) => {
   const { logout, user, isAuthenticated } = useAuth();
   const [authStatus, setAuthStatus] = useState(isAuthenticated);
@@ -26,27 +26,33 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Navbar bg="primary" variant="dark">
+      <Navbar className='navbar'>
       <Container>
           <Navbar.Brand href="/">Exchange Rates App</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
+            <FontAwesomeIcon icon="home" />
+            
               <Nav.Link as={Link} href="/">Home</Nav.Link>
               <Nav.Link as={Link} href="/about">About</Nav.Link>
               {authStatus ? (
                 <>
+    
+                  <FontAwesomeIcon icon="favorite" />
                   <Nav.Link as={Link} href="/favourites">Favorites</Nav.Link>
                   <Nav.Link href="#" onClick={(e) => { e.preventDefault(); logout(); alert('you are signed out') }}>Sign out</Nav.Link>
                 </>
               ) : (
                 <>
                   <Nav.Link as={Link} href="/login">Login</Nav.Link>
+
                   <Nav.Link as={Link} href="/register">Register</Nav.Link>
                 </>
               )}
             </Nav>
             <Nav className="ms-auto">
+            <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
               <Search />
             </Nav>
           </Navbar.Collapse>

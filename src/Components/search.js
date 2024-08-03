@@ -3,10 +3,21 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
+
+
 const Search = () => {
   const [query, setQuery] = useState('');
   const [error, setError] = useState(null);
   const router = useRouter();
+
+  const [expanded, setExpanded] = useState(false);
+
+  const expand = () => {
+    setExpanded(!expanded);
+  };
+
+
+
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -28,6 +39,8 @@ const Search = () => {
       setError('An error occurred while searching for the cryptocurrency');
     }
   };
+
+
 
   return (
     <div>

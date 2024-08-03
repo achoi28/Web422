@@ -7,18 +7,11 @@
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #000728;
+  background-color: #080a0a;
   color: white;
 
 } 
 
-.layout {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  height: 100vh;
-}
 
 .header {
   width: 100%;
@@ -36,94 +29,6 @@
   justify-content: center;
   width: 100%;
 }
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.card {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.card h1 {
-  margin-bottom: 20px;
-  font-size: 24px;
-}
-
-.card label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.card input,
-.card select,
-.card button {
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-.card button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.card button:hover {
-  background-color: #0056b3;
-}
-
-.result {
-  margin-top: 20px;
-  padding: 10px;
-  background: #f1f1f1;
-  border-radius: 4px;
-}
-
-.currency-table {
-  max-width: 600px;
-  width: 80%;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.currency-table h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
-  text-align: center;
-}
-
-.currency-table table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.currency-table th,
-.currency-table td {
-  padding: 10px;
-  border: 1px solid #ccc;
-  text-align: center;
-}
-
-.currency-table th {
-  background-color: #f4f4f9;
-}
-
 
 
 
@@ -191,19 +96,28 @@
   text-decoration: underline;
 } 
 
+/* main table */
 
-/* main table  */
+.crypto-list-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+}
+
 .crypto-table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
   font-size: 18px;
   text-align: left;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.996);
 }
 
 .crypto-table th,
 .crypto-table td {
-  border: 1px solid #dddddd;
   padding: 12px;
 }
 
@@ -211,10 +125,15 @@
   background: #5c5555;
 }
 
+.crypto-table tr {
+  border-bottom: 1px solid #dddddd;
+}
+
 .crypto-logo {
   width: 24px;
   height: 24px;
 }
+
 
 .positive-change {
   color: green;
@@ -257,3 +176,30 @@
   cursor: pointer;
   border-radius: 5px;
 }
+
+
+
+
+.navbar {
+  width: 100%;
+  background-color: #080a0a;
+  overflow: auto;
+  box-shadow: 0 0 10px white;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #ebdddd;
+}
+
+.active {
+  background-color: #ccd7d3;
+}
+

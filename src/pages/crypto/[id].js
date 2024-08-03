@@ -88,7 +88,7 @@ const CryptoDetail = () => {
             </tr>
             <tr>
               <td>
-        <a href={urls.website} target="_blank"><img src={'https://cdn.brandfetch.io/bitcoin.org/w/400/h/400'} alt={crypto.name} style={{ width: '50px', height: '50px' }} /></a>
+        <a href={urls.website} target="_blank"><img src={'https://cdn.brandfetch.io/web.de/w/400/h/400'} alt={crypto.name} style={{ width: '50px', height: '50px' }} /></a>
         </td>
         <a href={urls.twitter} target="_blank"><img src={'https://cdn.brandfetch.io/x.com/w/400/h/400'} alt={crypto.name} style={{ width: '50px', height: '50px' }} /></a>
 <td>
