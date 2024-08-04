@@ -32,39 +32,61 @@ const RegisterPage = () => {
   }
 
   return (
-    <div className="login-container">
-      <div className="login-box">
-        <form className="login-form" onSubmit={handleSubmit}>
-          <h1>Register Information</h1>
+    <>
+    <div className="background">
+    <div className="shape"><img 
+    src={'https://cdn.brandfetch.io/ethereum.org/w/400/h/400'}
+    
+    style={{
+      width: '250px',
+      height: '250px',
+      borderRadius: '50%'
+
+       }}/>
+       </div>
+    <div className="shape"><img 
+  src={'https://cdn.brandfetch.io/bitcoin.org/w/400/h/400'}
+ 
+  style={{ 
+    width: '250px', 
+    height: '250px', 
+    borderRadius: '50%' 
+  }} 
+/>
+</div>
+  </div>
+        <form className="form" onSubmit={handleSubmit}>
+          <h3>Register Information</h3>
+          {/* <label htmlFor="username">Username</label> */}
           <input
+          id='username'
             type="email"
-            className="input-field"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
           />
           <input
+          id='password1'
             type="password"
-            className="input-field"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
           />
           <input
+
+          id='password2'
             type="password"
-            className="input-field"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             placeholder="Confirm Password"
           />
-          <button className="button" type="submit">Register</button>
+          <button className="loginButton" type="submit">Register</button>
           {error && <p>{error}</p>}
-        </form>
-        <div className="footer">
-          <a href="/login">Already have an account? Log in</a>
+          <div>
+          <a href="/login"><p>Already have an account? Log in</p></a>
         </div>
-      </div>
-    </div>
+        </form>
+        </>
   );
 };
 

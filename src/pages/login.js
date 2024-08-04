@@ -27,30 +27,53 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="login-container">
-      <div className="login-box">
-        <form className="login-form" onSubmit={handleSubmit}>
-          <h1>Login Information</h1>
+<>
+    <div className="background">
+    <div className="shape"><img 
+    src={'https://cdn.brandfetch.io/ethereum.org/w/400/h/400'}
+    
+    style={{
+      width: '250px',
+      height: '250px',
+      borderRadius: '50%'
+
+       }}/>
+       </div>
+    <div className="shape"><img 
+  src={'https://cdn.brandfetch.io/bitcoin.org/w/400/h/400'}
+ 
+  style={{ 
+    width: '250px', 
+    height: '250px', 
+    borderRadius: '50%' 
+  }} 
+/>
+</div>
+  </div>
+        <form className="form" onSubmit={handleSubmit}>
+          <h3>Login Information</h3>
+          <label htmlFor="username">Username</label>
           <input
+          id='username'
             type="email"
-            className="input-field"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
           />
+          <label htmlFor="password">Password</label>
           <input
+          id='password'
             type="password"
-            className="input-field"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
           />
-          <button className="button" type="submit">Login</button>
+          <button className="loginButton" type="submit">Login</button>
           {error && <p>{error}</p>}
         </form>
-      </div>
-    </div>
+        </>
   );
 };
 
 export default LoginPage;
+

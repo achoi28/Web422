@@ -19,7 +19,7 @@ const CryptoDetail = () => {
       const fetchCrypto = async () => {
         try {
           const response = await axios.get(`/api/crypto/${id}`);
-          console.log(response.data.data); // Log the data to verify
+          console.log(response.data.data); 
           setCrypto(response.data.data);
           setLoading(false);
         } catch (error) {
@@ -49,7 +49,7 @@ const CryptoDetail = () => {
     datasets: [
       {
         label: 'Price (USD)',
-        data: [crypto.quote.USD.price, crypto.quote.USD.price * 1.1, crypto.quote.USD.price * 0.9, crypto.quote.USD.price * 1.2, crypto.quote.USD.price * 1.1, crypto.quote.USD.price],
+        data: [crypto.quote.USD.price, crypto.quote.USD.price * 2, crypto.quote.USD.price * 0.2, crypto.quote.USD.price * 3, crypto.quote.USD.price * 1.1, crypto.quote.USD.price],
         fill: false,
         borderColor: 'rgba(75, 192, 192, 1)',
         tension: 0.1,
@@ -88,7 +88,7 @@ const CryptoDetail = () => {
             </tr>
             <tr>
               <td>
-        <a href={urls.website} target="_blank"><img src={'https://cdn.brandfetch.io/web.de/w/400/h/400'} alt={crypto.name} style={{ width: '50px', height: '50px' }} /></a>
+        <a href={urls.website} target="_blank"><img src={'https://cdn.brandfetch.io/bitcoin.org/w/400/h/400'} alt={crypto.name} style={{ width: '50px', height: '50px' }} /></a>
         </td>
         <a href={urls.twitter} target="_blank"><img src={'https://cdn.brandfetch.io/x.com/w/400/h/400'} alt={crypto.name} style={{ width: '50px', height: '50px' }} /></a>
 <td>
@@ -102,7 +102,12 @@ const CryptoDetail = () => {
          </table>
 
     </div>
+
+    
   );
 };
 
 export default CryptoDetail;
+
+
+
