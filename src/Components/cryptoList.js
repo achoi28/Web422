@@ -4,8 +4,6 @@ import Link from 'next/link';
 import Loading from './loading'; // Ensure this is correctly defined and exported
 import { useAuth } from '../useAuth';
 import { addFavorite, removeFavorite, getFavorites } from '../pages/api/favourite';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const CryptoList = () => {
   const { user } = useAuth();
@@ -50,13 +48,15 @@ const CryptoList = () => {
       try {
         console.log(`Adding ${cryptoName} (ID: ${cryptoId}) to favorites`);
         await addFavorite(user.uid, cryptoId, cryptoName);
-        fetchFavorites();
-        toast.success(`Added ${cryptoName} to Favorites`);
+        await fetchFavorites();
+        window.alert(`Added ${cryptoName} to Favorites`);
       } catch (error) {
         console.error('Error adding favorite:', error);
+        window.alert('Failed to add to Favorites');
       }
     } else {
       console.log('User not logged in');
+      window.alert('Please log in to add favorites');
     }
   };
 
@@ -65,12 +65,15 @@ const CryptoList = () => {
       try {
         console.log(`Removing crypto ID ${cryptoId} from favorites`);
         await removeFavorite(user.uid, cryptoId);
-        fetchFavorites();
+        await fetchFavorites();
+        window.alert('Removed from Favorites');
       } catch (error) {
         console.error('Error removing favorite:', error);
+        window.alert('Failed to remove from Favorites');
       }
     } else {
       console.log('User not logged in');
+      window.alert('Please log in to remove favorites');
     }
   };
 

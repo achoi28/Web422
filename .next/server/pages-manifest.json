@@ -4,6 +4,6 @@
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
   "/favourites": "pages/favourites.js",
-  "/login": "pages/login.js",
-  "/api/crypto": "pages/api/crypto.js"
+  "/crypto/[id]": "pages/crypto/[id].js",
+  "/api/crypto/[id]": "pages/api/crypto/[id].js"
 }
