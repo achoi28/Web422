@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../useAuth';
 import { getFavorites } from '../pages/api/favourite';
 import axios from 'axios';
-import Loading from '../components/loading'; // Corrected import
+import Loading from '../Components/loading'; // Corrected import
 
 const Favourites = () => {
   const { user } = useAuth();

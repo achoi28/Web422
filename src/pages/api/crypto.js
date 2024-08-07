@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 
     const ids = listingsResponse.data.data.map((crypto) => crypto.id).join(',');
 
-    // Fetch metadata including logos
+    // Fetch metadata endpoint including logos
     const infoResponse = await axios.get(COINMARKETCAP_INFO_URL, {
       headers: {
         'X-CMC_PRO_API_KEY': API_KEY,
@@ -39,7 +39,7 @@ export default async function handler(req, res) {
 
     res.status(200).json({ data: combinedData });
   } catch (error) {
-    console.error('Error fetching cryptocurrency data:', error);
-    res.status(500).json({ error: 'Error fetching cryptocurrency data' });
+    console.error('Error ', error);
+    res.status(500).json({ error: 'Error fetching the api' });
   }
 }

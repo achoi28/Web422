@@ -1,9 +1,10 @@
-import Crypto from "@/components/cryptoList"
+import Crypto from "@/Components/cryptoList"
+import GettingStarted from "@/Components/GettingStarted"
 export default function Home() {
 
   return (
     <>
-    <Crypto/>  
+    <GettingStarted/> 
     </>
   )
 }

@@ -1,4 +1,4 @@
-// src/components/loading.js
+// Components/loading.js
 const Loading = () => {
         return <div>Loading...</div>;
       };

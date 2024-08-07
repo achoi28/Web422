@@ -5,6 +5,8 @@ import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { useAuth } from '../../useAuth'; // Ensure the correct import path
 import { addFavorite, removeFavorite, getFavorites } from '../api/favourite';
+import Button from 'react-bootstrap/Button';
+
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -118,9 +120,9 @@ const CryptoDetail = () => {
         <p>Max Supply: {crypto.max_supply !== undefined ? crypto.max_supply : 'N/A'}</p>
         <p>Circulating Supply: {crypto.circulating_supply !== undefined ? crypto.circulating_supply : 'N/A'}</p>
         {user && (favorites.some(favorite => favorite.id === crypto.id) ? (
-          <button onClick={() => handleRemoveFavorite(crypto.id)}>Remove from Favorites</button>
+          <Button variant="danger"   onClick={() => handleRemoveFavorite(crypto.id)}>Remove from Favorites</Button>
         ) : (
-          <button onClick={() => handleAddFavorite(crypto.id, crypto.name)}>Add to Favorites</button>
+          <Button  variant="success" onClick={() => handleAddFavorite(crypto.id, crypto.name)}>Add to Favorites</Button>
         ))}
       </div>
       <div>

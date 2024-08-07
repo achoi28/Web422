@@ -1,4 +1,4 @@
-// components/CryptoChart.js
+// Components/CryptoChart.js
 import { Line } from 'react-chartjs-2';
 
 const CryptoChart = ({ data }) => {

@@ -28,13 +28,13 @@ const Layout = ({ children }) => {
     <>
       <Navbar className='navbar'>
       <Container>
-          <Navbar.Brand href="/">Exchange Rates App</Navbar.Brand>
+          <Navbar.Brand href="/">Crypto Market App</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
             <FontAwesomeIcon icon="home" />
             
-              <Nav.Link as={Link} href="/">Home</Nav.Link>
+              <Nav.Link as={Link} href="/AllCoins">All Coins</Nav.Link>
               <Nav.Link as={Link} href="/about">About</Nav.Link>
               {authStatus ? (
                 <>

@@ -1,17 +1,12 @@
-// components/SearchCrypto.js
+// Components/Search.js
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-
-
 
 const Search = () => {
   const [query, setQuery] = useState('');
   const [error, setError] = useState(null);
   const router = useRouter();
-
-
-
 
   const handleSearch = async (e) => {
     e.preventDefault();

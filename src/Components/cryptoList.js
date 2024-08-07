@@ -4,6 +4,9 @@ import Link from 'next/link';
 import Loading from './loading'; // Ensure this is correctly defined and exported
 import { useAuth } from '../useAuth';
 import { addFavorite, removeFavorite, getFavorites } from '../pages/api/favourite';
+import Custom500 from "./Custom500";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 
 const CryptoList = () => {
   const { user } = useAuth();
@@ -32,7 +35,7 @@ const CryptoList = () => {
         setIsLoading(false);
       } catch (error) {
         console.error('Error fetching cryptos:', error);
-        setError('Error fetching cryptocurrency data');
+        setError(<Custom500 />);
         setIsLoading(false);
       }
     };
@@ -91,6 +94,7 @@ const CryptoList = () => {
       <table className="crypto-table">
         <thead>
           <tr>
+            {user ? <th>Favourite</th> : <th></th>}
             <th>#</th>
             <th>Logo</th>
             <th>Name</th>
@@ -102,9 +106,29 @@ const CryptoList = () => {
             <th>Actions</th>
           </tr>
         </thead>
+
         <tbody>
           {cryptos.map((crypto, index) => (
             <tr key={crypto.id}>
+              <td>
+              {user && (
+        favorites.some(favorite => favorite.id === crypto.id) ? (
+          <FontAwesomeIcon
+            icon={solidStar}
+            color="gold"
+            onClick={() => handleRemoveFavorite(crypto.id)}
+            style={{ cursor: 'pointer' }}
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={solidStar}
+            color="gray"
+            onClick={() => handleAddFavorite(crypto.id, crypto.name)}
+            style={{ cursor: 'pointer' }}
+          />
+        )
+      )}
+              </td>
               <td>{index + 1}</td>
               <td><img src={crypto.logo} alt={crypto.name} className="crypto-logo" /></td>
               <td>{crypto.name}</td>
@@ -119,11 +143,6 @@ const CryptoList = () => {
                 <Link href={`/crypto/${crypto.id}`} legacyBehavior>
                   <a className="details-button">View</a>
                 </Link>
-                {user && (favorites.some(favorite => favorite.id === crypto.id) ? (
-                  <button onClick={() => handleRemoveFavorite(crypto.id)}>Remove from Favorites</button>
-                ) : (
-                  <button onClick={() => handleAddFavorite(crypto.id, crypto.name)}>Add to Favorites</button>
-                ))}
               </td>
             </tr>
           ))}
