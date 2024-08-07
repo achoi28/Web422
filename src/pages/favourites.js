@@ -1,22 +1,26 @@
-// src/pages/favourites.js
 import { useEffect, useState } from 'react';
 import { useAuth } from '../useAuth';
 import { getFavorites } from '../pages/api/favourite';
 import axios from 'axios';
-import loading from '../components/loading';
+import Loading from '../components/loading'; // Corrected import
 
 const Favourites = () => {
   const { user } = useAuth();
   const [favorites, setFavorites] = useState([]);
   const [cryptos, setCryptos] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true); // Renamed to avoid conflict
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchFavorites = async () => {
       if (user) {
-        const userFavorites = await getFavorites(user.uid);
-        setFavorites(userFavorites);
+        try {
+          const userFavorites = await getFavorites(user.uid);
+          setFavorites(userFavorites);
+        } catch (error) {
+          console.error('Error fetching favorites:', error);
+          setError('Error fetching favorites');
+        }
       }
     };
 
@@ -25,26 +29,30 @@ const Favourites = () => {
 
   useEffect(() => {
     const fetchCryptoDetails = async () => {
-      try {
-        if (favorites.length > 0) {
+      if (favorites.length > 0) {
+        try {
           const response = await axios.get('/api/crypto');
           const allCryptos = response.data.data;
-          const favoriteCryptos = allCryptos.filter(crypto => favorites.includes(crypto.id));
+          const favoriteCryptos = allCryptos.filter(crypto => 
+            favorites.some(fav => fav.id === crypto.id)
+          );
           setCryptos(favoriteCryptos);
+          setIsLoading(false);
+        } catch (error) {
+          console.error('Error fetching crypto details:', error);
+          setError('Error fetching cryptocurrency data');
+          setIsLoading(false);
         }
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching crypto details:', error);
-        setError('Error fetching cryptocurrency data');
-        setLoading(false);
+      } else {
+        setIsLoading(false);
       }
     };
 
     fetchCryptoDetails();
   }, [favorites]);
 
-  if (loading) {
-    return <loading />;
+  if (isLoading) {
+    return <Loading />;
   }
 
   if (error) {
@@ -52,7 +60,6 @@ const Favourites = () => {
   }
 
   return (
-    
     <div className='crypto-list-page'>
       <h1>Favorite Cryptocurrencies</h1>
       <table className="crypto-table">
