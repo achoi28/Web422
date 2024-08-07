@@ -39,8 +39,8 @@ const Layout = ({ children }) => {
               {authStatus ? (
                 <>
     
-                  <FontAwesomeIcon icon="favorite" />
-                  <Nav.Link as={Link} href="/favourites">Favorites</Nav.Link>
+                  {/* <FontAwesomeIcon icon="favorite" />
+                  <Nav.Link as={Link} href="/favourites">Favorites</Nav.Link> */}
                   <Nav.Link href="#" onClick={(e) => { e.preventDefault(); logout(); alert('you are signed out') }}>Sign out</Nav.Link>
                 </>
               ) : (
