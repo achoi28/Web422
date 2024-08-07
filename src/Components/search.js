@@ -2,6 +2,10 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+
 
 const Search = () => {
   const [query, setQuery] = useState('');
@@ -43,7 +47,7 @@ const Search = () => {
           onChange={(e) => setQuery(e.target.value)}
         />
         <button className='search-btn' type="submit">
-          <i className='fas fa-search'></i>
+        <FontAwesomeIcon icon={faSearch} />
         </button>
         
       </form>

@@ -3,6 +3,7 @@ import { useAuth } from '../useAuth';
 import { getFavorites } from '../pages/api/favourite';
 import axios from 'axios';
 import Loading from '../Components/loading'; // Corrected import
+import Custom500 from '@/Components/Custom500';
 
 const Favourites = () => {
   const { user } = useAuth();
@@ -40,7 +41,7 @@ const Favourites = () => {
           setIsLoading(false);
         } catch (error) {
           console.error('Error fetching crypto details:', error);
-          setError('Error fetching cryptocurrency data');
+          setError(<Custom500/>);
           setIsLoading(false);
         }
       } else {
