@@ -15,6 +15,7 @@
     "bcrypt": "^5.1.1",
     "bootstrap": "^5.3.3",
     "firebase": "^10.12.4",
+    "firestore": "^1.1.6",
     "jotai": "^2.9.1",
     "jwt-decode": "^4.0.0",
     "next": "14.2.5",
@@ -22,6 +23,7 @@
     "react-bootstrap": "^2.10.4",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
+    "react-toastify": "^10.0.5",
     "swr": "^2.2.5"
   },
   "devDependencies": {

@@ -1,5 +1,7 @@
-const Search = () => {
-        return <div class="loader"></div>
-
-    
-}
+// src/components/loading.js
+const Loading = () => {
+        return <div>Loading...</div>;
+      };
+      
+      export default Loading;
+      
